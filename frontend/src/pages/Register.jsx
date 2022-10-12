@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { FaUser } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import { toast } from "react-toastify";
-import { register, reset } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { FaUser } from "react-icons/fa";
+import { register, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
 
 function Register() {
@@ -46,7 +46,7 @@ function Register() {
     e.preventDefault();
 
     if (password !== password2) {
-      toast.error("Password does not match");
+      toast.error("Passwords do not match");
     } else {
       const userData = {
         name,
@@ -80,7 +80,7 @@ function Register() {
               id="name"
               name="name"
               value={name}
-              placeholder="Please enter your name"
+              placeholder="Enter your name"
               onChange={onChange}
             />
           </div>
@@ -91,7 +91,7 @@ function Register() {
               id="email"
               name="email"
               value={email}
-              placeholder="Please enter your email"
+              placeholder="Enter your email"
               onChange={onChange}
             />
           </div>
@@ -102,18 +102,18 @@ function Register() {
               id="password"
               name="password"
               value={password}
-              placeholder="Please enter your password"
+              placeholder="Enter password"
               onChange={onChange}
             />
           </div>
           <div className="form-group">
             <input
-              type="password2"
+              type="password"
               className="form-control"
               id="password2"
               name="password2"
               value={password2}
-              placeholder="Please confirm your password"
+              placeholder="Confirm password"
               onChange={onChange}
             />
           </div>

@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import Goalform from "../components/Goalform";
-import Spinner from "../components/Spinner";
-import { reset, getGoals } from "../features/goals/goalSlice";
+import GoalForm from "../components/GoalForm";
 import GoalItem from "../components/GoalItem";
+import Spinner from "../components/Spinner";
+import { getGoals, reset } from "../features/goals/goalSlice";
+
 function Dashboard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function Dashboard() {
     if (!user) {
       navigate("/login");
     }
+
     dispatch(getGoals());
 
     return () => {
@@ -36,13 +38,15 @@ function Dashboard() {
   return (
     <>
       <section className="heading">
-        <h1>Welcome {user && user.name} </h1>
-        <p>Gaols Dashboard</p>
+        <h1>Welcome {user && user.name}</h1>
+        <p>Goals Dashboard</p>
       </section>
-      <Goalform />
+
+      <GoalForm />
+
       <section className="content">
         {goals.length > 0 ? (
-          <div className=" goals">
+          <div className="goals">
             {goals.map((goal) => (
               <GoalItem key={goal._id} goal={goal} />
             ))}
